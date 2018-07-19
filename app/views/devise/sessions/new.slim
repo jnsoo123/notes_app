@@ -1,0 +1,25 @@
+.row.justify-content-md-center.mt-5
+  .col-md-6
+    .login-form.bg-light.p-5
+      h2.text-center Login Page
+      hr
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field.form-group
+          = f.label :email
+          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
+
+        .field.form-group
+          = f.label :password
+          = f.password_field :password, autocomplete: :off, class: 'form-control'
+
+        - if devise_mapping.rememberable?
+          .field.custom-control.custom-checkbox.form-group
+            = f.check_box :remember_me, class: 'custom-control-input'
+            = f.label :remember_me, class: 'custom-control-label'
+
+        .actions.form-group
+          .row
+            .col-md-6
+              = f.submit 'Log In', class: 'btn btn-info btn-block'
+            .col-md-6
+              = link_to 'Register', new_user_registration_path, class: 'btn btn-outline-info btn-block'

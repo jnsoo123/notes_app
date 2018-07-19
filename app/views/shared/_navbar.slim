@@ -1,0 +1,10 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  = link_to 'NotesApp', root_path, class: 'navbar-brand'
+  button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbarDropdown' aria-controls='navbarDropdown' aria-expanded='false' aria-label='Toggle Navigation'
+    span.navbar-toggler-icon
+        
+  #navbarDropdown.collapse.navbar-collapse
+    ul.navbar-nav.ml-auto
+      - if user_signed_in?
+        li.nav-item
+          = link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete
