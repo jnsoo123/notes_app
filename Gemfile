@@ -21,6 +21,7 @@ gem 'devise'
 gem 'slim'
 gem 'pundit'
 gem 'administrate'
+gem 'react-rails'
 # End Gems Used
 
 group :development, :test do

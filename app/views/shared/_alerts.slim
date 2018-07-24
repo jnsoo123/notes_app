@@ -1,0 +1,10 @@
+- flash.each do |key, content|
+  - if key != 'timedout'
+    div class=("alert alert-dismissible alert-#{key == 'notice' ? 'success' : 'danger'}")
+      button.close data-dismiss='alert' type='button' ×
+      = content
+
+- if devise_error_messages!.present?
+  .alert.alert-dismissible.alert-danger
+    button.close data-dismiss='alert' type='button' ×
+    = devise_error_messages!

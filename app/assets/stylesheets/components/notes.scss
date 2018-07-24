@@ -1,0 +1,59 @@
+.notes-index {
+  .notes-item {
+    .notes-item__body {
+      font-family: 'Lucida Console', Monaco, monospace;
+    }
+
+    a {
+      color: black;
+    }
+  }
+
+  .card {
+    height: 300px;
+  }
+
+  .notes-new {
+    .notes-new__body {
+      font-family: 'Lucida Console', Monaco, monospace;
+    }
+
+    .notes-new__input,
+    .notes-new__textarea {
+      -webkit-appearance: none; 
+      outline: none;
+      border: none;
+      font-family: 'Lucida Console', Monaco, monospace;
+
+      &::placeholder {
+        font-family: 'Lucida Console', Monaco, monospace;
+      }
+    }
+
+    .notes-new__input {
+      width: 100%;
+      font-size: 1.40625rem; 
+
+      &::placeholder {
+        font-size: 1.40625rem; 
+      } 
+    }
+
+    .notes-new__textarea {
+      resize: none;
+      height: 12em;
+      width: 100%;
+    }
+
+    a {
+      color: black;
+      &:hover {
+        text-decoration: none;
+
+        .card {
+          border-color: $info !important;
+        }
+      }
+    }
+  }
+}

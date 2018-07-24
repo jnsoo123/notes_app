@@ -5,6 +5,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         
   #navbarDropdown.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
+      - if current_user&.admin?
+        li.nav-item
+          = link_to 'Adminstrator', admin_root_path, class: 'nav-link'
       - if user_signed_in?
         li.nav-item
           = link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete
