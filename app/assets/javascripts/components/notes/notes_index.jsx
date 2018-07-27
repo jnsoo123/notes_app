@@ -54,21 +54,20 @@ class NotesIndex extends React.Component {
           authenticity_token: $('meta[name=csrf-token]').attr('content')
         },
         success: (response) => {
-          this.setState({notes: []}, () => {
-            this.setState({notes: response.notes})
-          })
+          this.setState({notes: response.notes})
         }
       })
     }
   }
 
   renderNotes() {
+    console.log('rendered')
     return this.state.notes.map((note, i) => {
       return(
         <NotesItem 
           key={i} 
           note={note} 
-          deleteNote={this.deleteNote}/>
+          deleteNote={this.deleteNote.bind(this)}/>
       )
     })
   }
