@@ -35,7 +35,7 @@ class NotesIndex extends React.Component {
       },
       success: (response) => {
         this.setState({notes: response.notes})
-      }.bind(this),
+      },
       complete: () => {
         title.val('') 
         text.val('')
@@ -54,10 +54,10 @@ class NotesIndex extends React.Component {
           authenticity_token: $('meta[name=csrf-token]').attr('content')
         },
         success: (response) => {
-          this.setState({notes: response.notes}, () => {
-            console.log(this.state.notes)
-          }.bind(this))
-        }.bind(this)
+          this.setState({notes: []}, () => {
+            this.setState({notes: response.notes})
+          })
+        }
       })
     }
   }
