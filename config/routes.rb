@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   # Model Routes
-  resources :notes, only: [:index, :create]
+  resources :notes, only: [:index, :create, :destroy]
   root to: 'notes#index'
 end

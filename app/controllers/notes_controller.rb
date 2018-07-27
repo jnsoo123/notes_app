@@ -11,6 +11,13 @@ class NotesController < ApplicationController
     render json: { success: true, notes: user_notes }
   end
 
+  def destroy
+    @note = Note.find(params[:id])
+    @note.destroy
+
+    render json: { success: true, notes: user_notes }
+  end
+
   private
 
   def note_params
@@ -18,6 +25,6 @@ class NotesController < ApplicationController
   end
 
   def user_notes
-    current_user.notes
+    current_user.notes.order(created_at: :desc)
   end
 end

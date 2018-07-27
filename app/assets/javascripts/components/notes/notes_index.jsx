@@ -1,9 +1,9 @@
 class NotesIndex extends React.Component {
   constructor(props) {
     super(props) 
-    this.state = {
-      notes: this.props.notes.reverse()
-    }
+    let initialState = $.extend({}, this.props)
+
+    this.state = initialState
   }
 
   componentDidMount() {
@@ -34,8 +34,8 @@ class NotesIndex extends React.Component {
         authenticity_token: $('meta[name=csrf-token]').attr('content')
       },
       success: (response) => {
-        this.setState({notes: response.notes.reverse()})
-      },
+        this.setState({notes: response.notes})
+      }.bind(this),
       complete: () => {
         title.val('') 
         text.val('')
@@ -43,10 +43,32 @@ class NotesIndex extends React.Component {
     }) 
   }
 
+  deleteNote(note, event) {
+    event.preventDefault()
+
+    if(confirm('Are you sure you want to delete this note?')) {
+      $.ajax({
+        method: 'DELETE',
+        url: `/notes/${note.id}`,
+        data: {
+          authenticity_token: $('meta[name=csrf-token]').attr('content')
+        },
+        success: (response) => {
+          this.setState({notes: response.notes}, () => {
+            console.log(this.state.notes)
+          }.bind(this))
+        }.bind(this)
+      })
+    }
+  }
+
   renderNotes() {
     return this.state.notes.map((note, i) => {
       return(
-        <NotesItem key={i} note={note} />
+        <NotesItem 
+          key={i} 
+          note={note} 
+          deleteNote={this.deleteNote}/>
       )
     })
   }

@@ -22,6 +22,7 @@ gem 'slim'
 gem 'pundit'
 gem 'administrate'
 gem 'react-rails'
+gem 'font-awesome-sass'
 # End Gems Used
 
 group :development, :test do
