@@ -1,8 +1,4 @@
 class NotesItem extends React.Component {
-  componentWillReceiveProps() {
-    console.log('received props') 
-  }
-
   render() {
     return(
       <div className='notes-item col-md-4 mt-3'>
