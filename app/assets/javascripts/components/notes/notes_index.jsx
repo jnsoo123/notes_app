@@ -1,12 +1,13 @@
 class NotesIndex extends React.Component {
   constructor(props) {
-    super(props) 
+    super(props)
     let initialState = $.extend({}, this.props)
 
     this.state = initialState
   }
 
   componentDidMount() {
+    // Events for Create Form
     $('.notes-new__form').on('focusout', (event) => {
       let title = $('.notes-new__input')
       let text  = $('.notes-new__textarea')
@@ -20,6 +21,7 @@ class NotesIndex extends React.Component {
         }
       }, 0)
     })
+
   }
 
   createNote(title, text) {
@@ -37,10 +39,10 @@ class NotesIndex extends React.Component {
         this.setState({notes: response.notes})
       },
       complete: () => {
-        title.val('') 
+        title.val('')
         text.val('')
       }
-    }) 
+    })
   }
 
   deleteNote(note, event) {
@@ -64,9 +66,9 @@ class NotesIndex extends React.Component {
     console.log('rendered')
     return this.state.notes.map((note, i) => {
       return(
-        <NotesItem 
-          key={i} 
-          note={note} 
+        <NotesItem
+          key={i}
+          note={note}
           deleteNote={this.deleteNote.bind(this)}/>
       )
     })
@@ -79,14 +81,14 @@ class NotesIndex extends React.Component {
           <div className='card-body'>
             <form className='notes-new__form'>
               <div className='form-group p-1'>
-                <input 
-                  className='notes-new__input' 
-                  type='text' 
+                <input
+                  className='notes-new__input'
+                  type='text'
                   placeholder='New Note Title' />
               </div>
               <div className='form-group mt-3'>
-                <textarea 
-                  className='notes-new__textarea' 
+                <textarea
+                  className='notes-new__textarea'
                   placeholder='Add text'>
                 </textarea>
                 <small className='form-text text-muted text-center'>
