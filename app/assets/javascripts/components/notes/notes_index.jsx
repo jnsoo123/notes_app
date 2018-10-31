@@ -1,8 +1,12 @@
 class NotesIndex extends React.Component {
   constructor(props) {
     super(props)
-    let initialState = $.extend({}, this.props)
 
+    let defaultState = {
+      query: ''
+    }
+
+    let initialState = $.extend(defaultState, this.props)
     this.state = initialState
   }
 
@@ -21,7 +25,14 @@ class NotesIndex extends React.Component {
         }
       }, 0)
     })
+  }
 
+  handleQuery(e) {
+    let query = $(e.target).val()
+
+    this.setState({query: query}, () => {
+      this.search(query)
+    })
   }
 
   createNote(title, text) {
@@ -62,6 +73,21 @@ class NotesIndex extends React.Component {
     }
   }
 
+  search(query) {
+    $.ajax({
+      url: '/searches',
+      method: 'GET',
+      data: {
+        q: {
+          title_or_body_cont: query
+        }
+      },
+      success: (response) => {
+        this.setState({notes: response.notes})
+      }
+    })
+  }
+
   renderNotes() {
     console.log('rendered')
     return this.state.notes.map((note, i) => {
@@ -75,7 +101,7 @@ class NotesIndex extends React.Component {
   }
 
   renderNewNote() {
-    return(<div className='col-md-4 mt-3'>
+    return(<div className='col-md-6 mb-4'>
       <div className='notes-new'>
         <div className='card border-light'>
           <div className='card-body'>
@@ -102,9 +128,31 @@ class NotesIndex extends React.Component {
     </div>)
   }
 
+  renderSearchForm() {
+    return(
+      <div className='notes-search'>
+        <div className='row'>
+          <div className='col-12'>
+            <div className='form-group'>
+              <form onSubmit={this.search.bind(this)}>
+                <input
+                  value={this.state.query}
+                  type='text'
+                  className='form-control'
+                  onChange={this.handleQuery.bind(this)}
+                  placeholder='Search' />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return(
-      <div className='notes-index mt-5'>
+      <div className='notes-index mt-3'>
+        {this.renderSearchForm()}
         <div className='row'>
           {this.renderNewNote()}
           {this.renderNotes()}

@@ -20,9 +20,10 @@ gem 'bootswatch'
 gem 'devise'
 gem 'slim'
 gem 'pundit'
-gem 'administrate'
 gem 'react-rails'
 gem 'font-awesome-sass'
+gem 'activeadmin'
+gem 'formadmin'
 # End Gems Used
 
 group :development, :test do

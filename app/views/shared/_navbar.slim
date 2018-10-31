@@ -1,8 +1,8 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   = link_to 'NotesApp', root_path, class: 'navbar-brand'
   button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbarDropdown' aria-controls='navbarDropdown' aria-expanded='false' aria-label='Toggle Navigation'
     span.navbar-toggler-icon
-        
+
   #navbarDropdown.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
       - if current_user&.admin?

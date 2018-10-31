@@ -1,7 +1,9 @@
 .row.justify-content-md-center.mt-5
   .col-md-6
-    .signup-form.bg-light.p-5
-      h2.text-center Sign Up Page
+    .card.signup-form.bg-light.p-5
+      h2.text-center Note Me !
+      br
+      small.text-center Registration
       hr
 
       = render partial: 'shared/alerts'
@@ -22,6 +24,6 @@
         .actions.form-group
           .row
             .col-md-6
-              = f.submit 'Sign up', class: 'btn btn-info btn-block'
+              = f.submit 'Sign up', class: 'btn btn-success btn-block'
             .col-md-6
-              = link_to 'Log In', new_user_session_path, class: 'btn btn-outline-info btn-block'
+              = link_to 'Log In', new_user_session_path, class: 'btn btn-outline-success btn-block'

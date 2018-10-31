@@ -1,7 +1,9 @@
 .row.justify-content-md-center.mt-5
   .col-md-6
-    .login-form.bg-light.p-5
-      h2.text-center Login Page
+    .card.login-form.bg-light.p-5
+      h2.text-center Note Me !
+      br
+      small.text-center Log in to your account
       hr
 
       = render partial: 'shared/alerts'
@@ -23,6 +25,6 @@
         .actions.form-group
           .row
             .col-md-6
-              = f.submit 'Log In', class: 'btn btn-info btn-block'
+              = f.submit 'Log In', class: 'btn btn-success btn-block'
             .col-md-6
-              = link_to 'Register', new_user_registration_path, class: 'btn btn-outline-info btn-block'
+              = link_to 'Register', new_user_registration_path, class: 'btn btn-outline-success btn-block'
